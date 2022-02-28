@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start-dev": "nodemon node server/server.js",
     "start": "node server/server.js",
-    "setup":"npm install && npm run start",
+    "setup":"npm install && npm run start"
 
   },
   "author": "keren",
