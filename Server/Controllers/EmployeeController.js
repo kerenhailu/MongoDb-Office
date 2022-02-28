@@ -24,9 +24,12 @@ const PostInfo =async (req, res) => {
 };
 const PutInfo =async (req, res) => {
   await Employees.find((Employee) => Employee.id === parseInt(req.params.id))
-  res.send();
+  .then((result)=>res.send(result))
+  .catch((err)=>res.status(404).send({ massage: err }))
 };
 const DeleteInfo =async (req, res) => {
-  res.send();
+  await Employees.find((Employee) => Employee.id === parseInt(req.params.id))
+  .then((result)=>res.send(result))
+  .catch((err)=>res.status(404).send({ massage: err }))
 };
 module.exports = { GetAllInfo, GetByIdInfo, PostInfo, PutInfo, DeleteInfo };
