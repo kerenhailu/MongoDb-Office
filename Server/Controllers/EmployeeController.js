@@ -23,12 +23,14 @@ const PostInfo =async (req, res) => {
   
 };
 const PutInfo =async (req, res) => {
-  await Employees.find((Employee) => Employee.id === parseInt(req.params.id))
+  const UpdateEmployee= Employees.find((Employee) => Employee.id === parseInt(req.params.id))
+  
   .then((result)=>res.send(result))
   .catch((err)=>res.status(404).send({ massage: err }))
 };
 const DeleteInfo =async (req, res) => {
-  await Employees.find((Employee) => Employee.id === parseInt(req.params.id))
+   const DeleteEmployee= Employees.find((Employee) => Employee.id === parseInt(req.params.id))
+   await Employees.delete(DeleteEmployee)
   .then((result)=>res.send(result))
   .catch((err)=>res.status(404).send({ massage: err }))
 };
