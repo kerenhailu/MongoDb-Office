@@ -2,7 +2,6 @@ require('dotenv').config();
 const express=require('express');
 require('./DB');
 const cors=require('cors');
-const controllers=require('./Controllers/EmployeeController')
 const RouterEmployee = require('./Routs/EmployeeRout');
 const app=express();
 app.use(express.json());
