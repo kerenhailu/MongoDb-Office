@@ -1,11 +1,12 @@
 require('dotenv').config();
 const express=require('express');
-const app=express();
 require('./DB');
-app.use(express.json());
-const controllers=require('./Controllers/EmployeeController')
 const cors=require('cors');
+const controllers=require('./Controllers/EmployeeController')
 const RouterEmployee = require('./Routs/EmployeeRout');
+const app=express();
+app.use(express.json());
 app.use(cors())
-app.use('/',RouterEmployee)
 app.listen(process.env.PORT)
+app.use('/employees',RouterEmployee)
+app.get('/',(req,res)=>res.send("is working "))
