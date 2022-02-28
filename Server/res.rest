@@ -1,1 +1,15 @@
 GET http://localhost:1998
+
+###
+
+POST http://localhost:1998
+
+{
+  "firstName": "keren",
+  "lastName":"hailu"
+}
+###
+PUT http://localhost:1998
+
+###
+DELETE http://localhost:1998

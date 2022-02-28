@@ -8,18 +8,25 @@ const GetAllInfo = async (req, res) => {
   .then((result)=>res.send(result))
   .catch((err)=>res.status(404).send({ massage: err }))
 }
-const GetByIdInfo = (req, res) => {
-  // await Employees.find()
-  // .then((result)=>res.send(result))
-  // .catch((err)=>res.status(404).send({ massage: err }))
+
+
+const GetByIdInfo =async (req, res) => {
+  await Employees.find((Employee) => Employee.id === parseInt(req.params.id))
+  .then((result)=>res.send(result))
+  .catch((err)=>res.status(404).send({ massage: err }))
 };
-const PostInfo = (req, res) => {
+
+const PostInfo =async (req, res) => {
+  await Employees.create(req.body)
+  .then((result)=>res.send(result))
+  .catch((err)=>res.status(404).send({ massage: err }))
+  
+};
+const PutInfo =async (req, res) => {
+  await Employees.find((Employee) => Employee.id === parseInt(req.params.id))
   res.send();
 };
-const PutInfo = (req, res) => {
-  res.send();
-};
-const DeleteInfo = (req, res) => {
+const DeleteInfo =async (req, res) => {
   res.send();
 };
 module.exports = { GetAllInfo, GetByIdInfo, PostInfo, PutInfo, DeleteInfo };
