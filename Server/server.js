@@ -6,6 +6,7 @@ const RouterEmployee = require('./Routs/EmployeeRout');
 const app=express();
 app.use(express.json());
 app.use(cors());
-app.listen(process.env.PORT)
+const PORT =1998 || process.env.PORT
+app.listen(PORT)
 app.get('/',(req,res)=>res.send("is working"))
 app.use('/employees',RouterEmployee)
