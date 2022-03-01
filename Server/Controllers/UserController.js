@@ -1,5 +1,5 @@
 const Users = require("../Models/EmployeeModel");
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
 const register = async (req, res) => {
   if (Users.exists(req.body.email)==true)
     return res.status(400).json({ massage: "email already exists" });
