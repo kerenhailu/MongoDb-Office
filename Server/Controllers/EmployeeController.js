@@ -35,18 +35,17 @@ const PostInfo = async (req, res) => {
 
 const PutInfo = async (req, res) => {
   const UpdateEmployee = Employees.find(
-    (Employee) => Employee.id === parseInt(req.params.id)
-  );
+    (Employee) => Employee.id === parseInt(req.params.id))
   if (!UpdateEmployee) {
     res.status(404).send("The employee with the given ID was not found.");
   }
   const { firstName, lastName, email } = req.body;
   UpdateEmployee.firstName = firstName;
   UpdateEmployee.lastName = lastName;
-  UpdateEmployee.email = email;
-  res.send(UpdateEmployee);
-  // .then((result) => res.send(result))
-  //   .catch((err) => res.status(404).send({ massage: err }));
+  UpdateEmployee.email = email
+  // res.send(UpdateEmployee);
+  .then((result) => res.send(result))
+    .catch((err) => res.status(404).send({ massage: err }));
 };
 
 const DeleteInfo = async (req, res) => {
@@ -69,6 +68,5 @@ module.exports = {
   GetByIdInfo,
   PostInfo,
   PutInfo,
-  DeleteInfo,
-  register,
+  DeleteInfo
 };

@@ -3,6 +3,7 @@ const express=require('express');
 require('./DB');
 const cors=require('cors');
 const RouterEmployee = require('./Routs/EmployeeRout');
+const RouterUser=require('./Routs/UserRout')
 
 const app=express();
 app.use(express.json());
@@ -15,3 +16,4 @@ app.post('/',(req,res)=>res.send('add'))
 app.put('/',(req,res)=>res.send('workk put'))
 app.delete('/',(req,res)=>res.send('workk delete'))
 app.use('/employees',RouterEmployee)
+app.use('/register',RouterUser)

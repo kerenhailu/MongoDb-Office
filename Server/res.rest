@@ -9,6 +9,21 @@ Content-Type: application/json
   "firstName": "keren",
   "lastName":"hailu"
 }
+
+
+###
+POST http://localhost:1998/register
+Content-Type: application/json
+
+{
+    "firstName": "eee",
+    "lastName": "hhh",
+    "email": "kk@",
+    "password": "123",
+    "lastLogIn": false,
+    "isLogIn": true,
+    "isAdmin": false
+  }
 ###
 PUT http://localhost:1998
 Content-Type: application/json
@@ -20,4 +35,4 @@ Content-Type: application/json
 }
 ###
 DELETE http://localhost:1998
-
+Content-Type: application/json
