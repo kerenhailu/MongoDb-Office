@@ -3,6 +3,7 @@ GET http://localhost:1998
 ###
 
 POST http://localhost:1998
+Content-Type: application/json
 
 {
   "firstName": "keren",
@@ -10,6 +11,13 @@ POST http://localhost:1998
 }
 ###
 PUT http://localhost:1998
+Content-Type: application/json
 
+{
+  "firstName": "keren",
+  "lastName":"hailu",
+  "email":"keren@"
+}
 ###
 DELETE http://localhost:1998
+
