@@ -18,4 +18,5 @@ app.listen(PORT)
 // app.use('/employees',RouterEmployee)
 
 // http://localhost:1998/auth/register
+app.get('/',(req,res)=>res.send("gfgf"))
 app.use('/auth',RouterUser)
