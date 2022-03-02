@@ -16,4 +16,5 @@ app.post('/',(req,res)=>res.send('add'))
 app.put('/',(req,res)=>res.send('workk put'))
 app.delete('/',(req,res)=>res.send('workk delete'))
 app.use('/employees',RouterEmployee)
-app.use('/register',RouterUser)
+// http://localhost:1998/auth/register
+app.use('/auth',RouterUser)

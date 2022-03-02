@@ -13,20 +13,18 @@ const register = async (req, res) => {
   });
 };
 
-const logIn=async(req,res)=>{
-  if(Users.exists(req.body.email)==true) return res.status(400).json({ massage: "email already exists" });
-  const {email,password}=req.body
-  const user =await Users.findOne(user=>user.email===req.body.email)
-  .then(user=>{
-
-  })
-  bcrypt.compare(password,user.password,(err,isMatch)=>{
-    if(err)return res.status(500).json({ massage: "err in compare" });
-    if(!isMatch)  return res.status(403).json({ massage: "incorrect password" })
-    jwt.sign(user,process.env.SECRET_KEY),{expiresIn:'30m'},(err,token)=>{
-      if(err)return res.status(500).json({ massage: "err in token" });
-      res.status(200).json({massage:"logIn successful",token})
-    }
-  })
+const logIn=async (req, res) => {
+  if (Users.exists(req.body.email) == false) return res.status(400).json({ message: 'Email not found' });
+  try {
+      const user = await Users.findOne({ email: req.body.email });
+      bcrypt.compare(req.body.password, user.password, (err, isMatch) => {
+          if (err) return res.status(500).json({ message: 'Error' });
+          if (!isMatch) return res.status(400).json({ message: 'Password incorrect' });
+          const token = jwt.sign({user}, process.env.SECRET_KEY, { expiresIn: '1h' });
+          return res.status(200).json({ message: 'Login successful', token });
+      })
+  } catch (err) {
+      return res.status(500).json(err);
+  };
 }
 module.exports ={register,logIn}
