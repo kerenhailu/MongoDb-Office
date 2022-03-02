@@ -27,4 +27,4 @@ const logIn=async (req, res) => {
       return res.status(500).json(err);
   };
 }
-module.exports ={register,logIn}
+module.exports ={register,logIn};

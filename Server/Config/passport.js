@@ -9,7 +9,6 @@ const Users = require("../Models/UserModel");
 const SECERET_KEY = process.env.SECERET_KEY;
 const options = {
 secretOrKey:process.env.SECERET_KEY
-
 };
 // מחזיק את התוקן מהבקשה
 // הפונקציה הולכת לריקווסט ומוציאה משם את התוקן
