@@ -1,8 +1,8 @@
 const RouterUser=require('express').Router();
-const register = require('../Controllers/UserController');
+const ReqHendler = require('../Controllers/UserController');
 
 
-RouterUser.post('/register',register.register)
-RouterUser.post('/login',register.logIn)
+RouterUser.post('/register',ReqHendler.register)
+RouterUser.post('/login',ReqHendler.logIn)
 
 module.exports =RouterUser
