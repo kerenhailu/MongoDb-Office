@@ -2,7 +2,7 @@
   "name": "officeserver",
   "version": "1.0.0",
   "description": "",
-  "main": "server/server.js",
+  "main": "./Server/server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start-dev": "nodemon node ./Server/server.js",
