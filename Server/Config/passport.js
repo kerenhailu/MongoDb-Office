@@ -2,7 +2,7 @@
 const StrategyJWT = require("passport-jwt").Strategy;
 // ועל מנת לחלץ מידע נייבא אותו
 const ExtractJwt = require("passport-jwt").ExtractJwt;
-//  כדי לעבוד מול הקולקשן ייבא מודל של יוזר
+//  כדי לעבוד מול הקולקשן נייבא מודל של יוזר
 const Users = require("../Models/UserModel");
 // את האיך יש לנו למעלה ייבואנו אבל באיזה שפה אנחנו לא יודעים
 // ובגלל זה נבייא גם את הסיקרט שלנו
