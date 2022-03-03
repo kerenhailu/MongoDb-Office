@@ -17,10 +17,30 @@ app.use(express.urlencoded());
 const passport = require("passport");
 const { Server } = require("http");
 require("./Config/passport")(passport);
+app.use(passport.initialize());
 
 app.use(cors());
 const PORT = process.env.PORT || 1998;
 app.listen(PORT);
+
+app.post('/',(req,res)=>res.send('add'))
+app.put('/',(req,res)=>res.send('workk put'))
+app.delete('/',(req,res)=>res.send('workk delete'))
+
+// authenticate היא בודקת אם יש תוקן בתוף זו הפונקצית מידלוור
+// פרמטר ראשון באיזה אסטרטגיה נרצה להשתמש וזה בJWT
+// סאן שהוא אובייקט שנשאר ומתחלף כל 20 דקותת ואנחנו לא רוצים לעבוד איתו
+app.use('/employees',passport.authenticate('jwt',{session:false}),RouterEmployee);
+
+// http://localhost:1998/auth/register
+app.use("/auth", RouterUser);
+
+// אתותיקשן זה אימות לאשר שיש משתמש כזה
+// הרשאות זה שאני רוצה לאפשר לו הרשאות אתורליזיישן 
+
+
+// פוקנציה שעוזרת לנו לאתחל את הפונקציה פספוט בתוך השרת
+// ולהציב בכל מיני ראוטים שאני ארצה לחוסם בעזרת התוקן
 
 
 
@@ -44,30 +64,3 @@ if(process.env.NODE_ENV==='production'){
     //  אלא במחשב שאנו נמצאים בו
     res.sendFile(path.join(__dirname,'../client/build','index.html')))
 }
-
-
-
-app.post('/',(req,res)=>res.send('add'))
-app.put('/',(req,res)=>res.send('workk put'))
-app.delete('/',(req,res)=>res.send('workk delete'))
-
-// authenticate היא בודקת אם יש תוקן בתוף זו הפונקצית מידלוור
-// פרמטר ראשון באיזה אסטרטגיה נרצה להשתמש וזה בJWT
-// סאן שהוא אובייקט שנשאר ומתחלף כל 20 דקותת ואנחנו לא רוצים לעבוד איתו
-app.use('/employees',passport.authenticate('jwt',{session:false}),RouterEmployee);
-
-// http://localhost:1998/auth/register
-app.use("/auth", RouterUser);
-
-// אתותיקשן זה אימות לאשר שיש משתמש כזה
-// הרשאות זה שאני רוצה לאפשר לו הרשאות אתורליזיישן 
-
-
-// פוקנציה שעוזרת לנו לאתחל את הפונקציה פספוט בתוך השרת
-// ולהציב בכל מיני ראוטים שאני ארצה לחוסם בעזרת התוקן
-app.use(passport.initialize());
-
-
-
-
-
