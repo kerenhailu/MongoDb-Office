@@ -28,7 +28,7 @@ if(process.env.NODE_ENV==='production'){
     // תיקייות client ובתוקה תיקיית build 
     // בתוך הבילד היא לוקחת את הפרויקט מפרקת ובונה מחדש
     // צריך ליצור את תיקיית הבילד
-    app.use(express.static('client/build'));
+    app.use(express.static(path.join('client/build')));
     
     // הניתוב של הגט הוא הכל זה הכוכבית וזה מכסה את הפינה של הסלאש
     // הפונקציה מחזיר לנו את הבקשה של קבצים 
