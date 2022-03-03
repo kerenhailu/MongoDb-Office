@@ -11,7 +11,9 @@
     "client": "cd client && npm run dev",
     "build":"npm run setup && npm run build:",
     "dev": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\"",
-    "heroku-postbuild":"cd client && npm install --only=dev && npm install && npm run build"
+    "heroku-postbuild":"cd client && npm install --only=dev && npm install && npm run build",
+    "heroku config":"set NPM_CONFIG_PRODUCTION=false YARN_PRODUCTION=false",
+    "dokku config":"set my-app NPM_CONFIG_PRODUCTION=false YARN_PRODUCTION=false"
 
   },
   "author": "keren",
