@@ -15,8 +15,10 @@ app.use(express.json({extended:true}));
 // שורה שעוזרת לנו לקרוא נתונים בתוך הURL
 app.use(express.urlencoded());
 const passport = require("passport");
-const { Server } = require("http");
+
 require("./Config/passport")(passport);
+// פוקנציה שעוזרת לנו לאתחל את הפונקציה פספוט בתוך השרת
+// ולהציב בכל מיני ראוטים שאני ארצה לחוסם בעזרת התוקן
 app.use(passport.initialize());
 
 app.use(cors());
@@ -37,12 +39,6 @@ app.use("/auth", RouterUser);
 
 // אתותיקשן זה אימות לאשר שיש משתמש כזה
 // הרשאות זה שאני רוצה לאפשר לו הרשאות אתורליזיישן 
-
-
-// פוקנציה שעוזרת לנו לאתחל את הפונקציה פספוט בתוך השרת
-// ולהציב בכל מיני ראוטים שאני ארצה לחוסם בעזרת התוקן
-
-
 
 if(process.env.NODE_ENV==='production'){
     // תיקייות client ובתוקה תיקיית build 
